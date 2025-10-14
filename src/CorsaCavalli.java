@@ -20,7 +20,7 @@ public class CorsaCavalli extends Thread {
             }catch(InterruptedException e){
                 throw new RuntimeException();
             }
-            System.out.println((i) + " " + name);
+            System.out.println("Giro: " + (i) + " " + name);
         }
     }
 }
