@@ -15,18 +15,17 @@ public class Main {
         lentezza = scanner.nextInt();
         CorsaCavalli thr2 = new CorsaCavalli(count, "Tartuca", lentezza);
 
-        System.out.println("Inserisci la lentezza del cavallo della Onda: ");
+        System.out.println("Inserisci la lentezza del cavallo dell'Onda: ");
         lentezza = scanner.nextInt();
         CorsaCavalli thr3 = new CorsaCavalli(count, "Onda", lentezza);
 
-        System.out.println("Inserisci la lentezza del cavallo della Aquila: ");
+        System.out.println("Inserisci la lentezza del cavallo dell'Aquila: ");
         lentezza = scanner.nextInt();
         CorsaCavalli thr4 = new CorsaCavalli(count, "Aquila", lentezza);
 
-        System.out.println("Inserisci la lentezza del cavallo della Istrice: ");
+        System.out.println("Inserisci la lentezza del cavallo dell'Istrice: ");
         lentezza = scanner.nextInt();
         CorsaCavalli thr5 = new CorsaCavalli(count, "Istrice", lentezza);
-
 
         thr1.start();
         thr2.start();
