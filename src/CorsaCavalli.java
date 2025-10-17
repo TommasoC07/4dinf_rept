@@ -21,6 +21,9 @@ public class CorsaCavalli extends Thread {
                 throw new RuntimeException();
             }
             System.out.println("Giro: " + (i) + " " + name);
+            if(Main.getPrimo().equals("")){
+                Main.setPrimo(this.name);
+            }
         }
     }
 }

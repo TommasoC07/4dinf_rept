@@ -1,36 +1,42 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
+    public static String primo = "";
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Quanti giri vuoi fare? ");
         int count = scanner.nextInt();
 
-        System.out.println("Inserisci la lentezza del cavallo dell'Oca: ");
-        int lentezza = scanner.nextInt();
-        CorsaCavalli thr1 = new CorsaCavalli(count, "Oca", lentezza);
+        ArrayList<CorsaCavalli> cavalli = new ArrayList<CorsaCavalli>();
 
-        System.out.println("Inserisci la lentezza del cavallo della Tartuca: ");
-        lentezza = scanner.nextInt();
-        CorsaCavalli thr2 = new CorsaCavalli(count, "Tartuca", lentezza);
+        do {
+            System.out.println("Inserisci la lentezza del cavallo: ");
+            int lentezza = scanner.nextInt();
+            scanner.nextLine();
+            System.out.println("Inserisci il nome del cavallo: ");
+            String name = scanner.nextLine();
+            CorsaCavalli thr = new CorsaCavalli(count, name, lentezza);
+            cavalli.add(thr);
+            System.out.println("Inserisci 1 per inserire un altro cavallo ");
 
-        System.out.println("Inserisci la lentezza del cavallo dell'Onda: ");
-        lentezza = scanner.nextInt();
-        CorsaCavalli thr3 = new CorsaCavalli(count, "Onda", lentezza);
+        }while(scanner.nextInt()==1);
 
-        System.out.println("Inserisci la lentezza del cavallo dell'Aquila: ");
-        lentezza = scanner.nextInt();
-        CorsaCavalli thr4 = new CorsaCavalli(count, "Aquila", lentezza);
+        System.out.println("Gara iniziata");
+        for(CorsaCavalli cavallo: cavalli) {
+            cavallo.start();
+        }
 
-        System.out.println("Inserisci la lentezza del cavallo dell'Istrice: ");
-        lentezza = scanner.nextInt();
-        CorsaCavalli thr5 = new CorsaCavalli(count, "Istrice", lentezza);
+        System.out.println("Il vincitore è " + primo);
 
-        thr1.start();
-        thr2.start();
-        thr3.start();
-        thr4.start();
-        thr5.start();
+    }
+
+    public static String getPrimo(){
+        return primo;
+    }
+
+    public static void setPrimo(String vincitore){
+        primo=vincitore;
     }
 }
