@@ -26,20 +26,22 @@ public class Main {
         }while(scanner.nextInt()==1);
 
         System.out.println("Gara iniziata");
-        for(CorsaCavalli cavallo: cavalli) {
-            cavallo.start();
-        }
+
 
         int zoppo = rand.nextInt(count);
+        //CorsaCavalli horse = cavalli.get(zoppo);
+        Gara gara = new Gara();
+        gara.start(cavalli, zoppo);
 
-        CorsaCavalli horse = cavalli.get(zoppo);
-        horse.interrupt();
+        //System.out.println(zoppo + " " + horse.getName());
 
-        for(CorsaCavalli cavallo: cavalli) {
-            cavallo.isAlive();
-        }
+
+
+
+    }
+
+    public static void printWinner(){
         System.out.println("Il vincitore è " + primo);
-
     }
 
     public static String getPrimo(){
