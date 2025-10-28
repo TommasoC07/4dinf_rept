@@ -1,11 +1,11 @@
 public class CorsaCavalli extends Thread {
-    private final int num_cavalli;
+    private final int num_giri;
     protected String name;
     protected int lentezza;
 
-    public CorsaCavalli(int num_cavalli, String name, int lentezza){
+    public CorsaCavalli(int num_giri, String name, int lentezza){
         super();
-        this.num_cavalli = num_cavalli;
+        this.num_giri = num_giri;
         this.name = name;
         this.lentezza = lentezza;
     }
@@ -14,7 +14,7 @@ public class CorsaCavalli extends Thread {
     public void run(){
         setName(name);
         System.out.println("Cavallo " + name + " comincia la sua partenza!");
-        for(int i=1; i<num_cavalli; i++){
+        for(int i=1; i<num_giri; i++){
             try{
                 sleep(lentezza);
             }catch(InterruptedException e){

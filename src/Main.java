@@ -28,20 +28,32 @@ public class Main {
         System.out.println("Gara iniziata");
 
 
-        int zoppo = rand.nextInt(count);
-        //CorsaCavalli horse = cavalli.get(zoppo);
-        Gara gara = new Gara();
-        gara.start(cavalli, zoppo);
+        int zoppo = rand.nextInt(cavalli.size()-1);
+        CorsaCavalli horse = cavalli.get(zoppo);
 
+        for(CorsaCavalli cavallo: cavalli) {
+            cavallo.start();
+            //cavalli.get(zoppo).interrupt();
+        }
+
+        try {
+            horse.interrupt();
+        }catch(Exception e){
+            throw new RuntimeException();
+        }
         //System.out.println(zoppo + " " + horse.getName());
 
-
-
-
-    }
-
-    public static void printWinner(){
+        for(CorsaCavalli cavallo : cavalli){
+            try {
+                cavallo.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
         System.out.println("Il vincitore è " + primo);
+
+
+
     }
 
     public static String getPrimo(){
