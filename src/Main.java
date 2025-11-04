@@ -43,6 +43,9 @@ public class Main {
         }
         //System.out.println(zoppo + " " + horse.getName());
 
+        /**
+         * commento di prova
+         **/
         for(CorsaCavalli cavallo : cavalli){
             try {
                 cavallo.join();
