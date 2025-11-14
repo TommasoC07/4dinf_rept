@@ -1,5 +1,10 @@
 import java.io.*;
 
+/**
+ * Questa classe serve a gestire la scrittura nei file.
+ * @author Tommaso Consalvi
+ * @version 1.0
+ */
 public class FileManager {
     private String path;
 

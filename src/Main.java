@@ -2,12 +2,48 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.*;
+
+
+/**
+ * Questa classe rappresenta la classe principale in cui viene gestita la gara.
+ * @author Tommaso Consalvi
+ * @version 0.5
+ */
 public class Main {
     public static String primo = "";
+    public static String percorsoFile = "";
     public static void main(String[] args) {
+
+
+        JFrame frame = new JFrame("FileChooser nella mia app");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        FileChooserDemo chooserPanel = new FileChooserDemo();
+        frame.add(chooserPanel);
+
+        frame.pack();
+        frame.setVisible(true);
+
+        JOptionPane.showMessageDialog(null,
+                "Scegli un file con il pulsante OPEN.\n" +
+                        "Dopo aver scelto il file, premi OK per continuare.");
+        while(percorsoFile.equals("")) {
+            try {
+                Thread.sleep(100);  // attesa breve, non blocca la GUI
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("Percorso selezionato: " + percorsoFile);
+
+        FileManager manager = new FileManager();
+        manager.setPath(percorsoFile);
 
         Random rand = new Random();
         Scanner scanner = new Scanner(System.in);
+        FileManager fileManager = new FileManager();
         System.out.println("Quanti giri vuoi fare? ");
         int count = scanner.nextInt();
 
@@ -19,7 +55,7 @@ public class Main {
             scanner.nextLine();
             System.out.println("Inserisci il nome del cavallo: ");
             String name = scanner.nextLine();
-            CorsaCavalli cavallo = new CorsaCavalli(count, name, lentezza);
+            CorsaCavalli cavallo = new CorsaCavalli(count, name, lentezza, manager);
             cavalli.add(cavallo);
             System.out.println("Inserisci 1 per inserire un altro cavallo ");
 
@@ -43,9 +79,6 @@ public class Main {
         }
         //System.out.println(zoppo + " " + horse.getName());
 
-        /**
-         * commento di prova
-         **/
         for(CorsaCavalli cavallo : cavalli){
             try {
                 cavallo.join();
